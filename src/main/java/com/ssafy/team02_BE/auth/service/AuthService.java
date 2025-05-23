@@ -155,7 +155,7 @@ public class AuthService {
         // refreshToken 정보 설정
         refresh.setUserId(userId);
         refresh.setRefresh(refreshToken);
-        refresh.setExpiration(expiryDate.toString());
+        refresh.setExpiration(expiryDate);
 
         // 저장
         refreshRepository.save(refresh);

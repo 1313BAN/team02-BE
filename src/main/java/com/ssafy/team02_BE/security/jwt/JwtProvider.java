@@ -55,12 +55,12 @@ public class JwtProvider implements InitializingBean {
     }
 
     /**
-     * @param principle - userId
+     * @param principal - userId
      * @return Jwt(accessToken, refreshToken)
      */
-    public Jwt getJwtTokensFromUserId(Long principle) {
+    public Jwt getJwtTokensFromUserId(Long principal) {
         //pricipal(userId)로 authenticationToken 생성
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(principle, null, List.of(new SimpleGrantedAuthority(Role.USER.name())));
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(principal, null, List.of(new SimpleGrantedAuthority(Role.USER.name())));
         //accessToken, refreshToken 생성
         return createJwtToken(authenticationToken);
     }

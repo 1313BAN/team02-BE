@@ -32,7 +32,7 @@ public class AuthController {
 
     @PostMapping("/login")
     @Operation(summary = "로그인")
-    private ResponseEntity<ApiResponse<LoginResponseDTO>> login(@RequestBody final LoginRequestDTO loginRequestDTO, HttpServletResponse response) {
+    public ResponseEntity<ApiResponse<LoginResponseDTO>> login(@RequestBody final LoginRequestDTO loginRequestDTO, HttpServletResponse response) {
         LoginResponseDTO loginUser = authService.login(loginRequestDTO);
         // loginUser로 token 생성
         Jwt jwt = authService.generateAuthTokens(loginUser.getId());
@@ -62,7 +62,7 @@ public class AuthController {
 
     @PostMapping("/signup")
     @Operation(summary = "회원가입")
-    private ResponseEntity<ApiResponse<SignupResponseDTO>> signup(@RequestBody SignupRequestDTO signupRequestDTO, HttpServletResponse response) {
+    public ResponseEntity<ApiResponse<SignupResponseDTO>> signup(@RequestBody SignupRequestDTO signupRequestDTO, HttpServletResponse response) {
         SignupResponseDTO signupUser = authService.signup(signupRequestDTO);
         // signupUser로 token 생성
         Jwt jwt = authService.generateAuthTokens(signupUser.getId());

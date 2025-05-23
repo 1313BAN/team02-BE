@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -20,10 +22,10 @@ public class Refresh {
 
     private Long userId;
     private String refresh;
-    private String expiration;
+    private LocalDateTime expiration;
 
     @Builder
-    public Refresh(Long userId, String refresh, String expiration) {
+    public Refresh(Long userId, String refresh, LocalDateTime expiration) {
         this.userId = userId;
         this.refresh = refresh;
         this.expiration = expiration;
@@ -37,7 +39,7 @@ public class Refresh {
         this.refresh = refresh;
     }
 
-    public void setExpiration(String expiration) {
+    public void setExpiration(LocalDateTime expiration) {
         this.expiration = expiration;
     }
 }
