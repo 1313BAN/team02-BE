@@ -103,7 +103,7 @@ public class AuthController {
         // 쿠키에서 refresh 토큰 삭제
         expireRefreshTokenCookie(response);
         return ResponseEntity
-                .status(HttpStatus.NO_CONTENT)
+                .status(HttpStatus.OK)
                 .body(ApiResponse.success(
                         SuccessCode.WITHDRAW_SUCCESS
                 ));
