@@ -11,8 +11,8 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,9 +24,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApartDealsController {
 	private final ApartDealsService apartDealsService;
 
-	@PostMapping("/{aptSeq}/deals")
+	@GetMapping("/{aptSeq}/deals")
 	@Operation(summary = "aptSeq로 아파트 거래 정보 조회")
-	public ResponseEntity<ApiResponse<List<ApartDeals>>> getApartDealsyAptSeq(@PathVariable String aptSeq) throws Exception {
+	public ResponseEntity<ApiResponse<List<ApartDeals>>> getApartDealsByAptSeq(@PathVariable String aptSeq) throws Exception {
 		return ResponseEntity
 			.status(HttpStatus.OK)
 			.body(ApiResponse.success(

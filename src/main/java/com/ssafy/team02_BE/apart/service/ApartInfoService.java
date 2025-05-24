@@ -34,21 +34,23 @@ public class ApartInfoService {
 	/**
 	 * AptSeq로 아파트 상세 정보 조회
 	 */
-	public ApartInfo getApartInfoByAptSeq(String aptSeq) throws Exception {
-		return apartInfoRepository.findByAptSeq(aptSeq);
+	public ApartInfo getApartInfoByAptSeq(String aptSeq) {
+		existsByAptSeq(aptSeq); // 존재 여부 검증
+		return apartInfoRepository.findByAptSeq(aptSeq).get();
 	}
 
 	/**
 	 * 동이름으로 아파트 상세 정보 리스트 조회
 	 */
 	public List<ApartInfo> getApartInfosByDongName(String dongName) {
-		return apartQueryRepository.getHouseInfosByDongName(dongName);
+		return apartQueryRepository.getApartInfosByDongName(dongName);
 	}
 
 	/**
 	 * AptSeq로 아파트 상세(아파트 상세 정보 + 아파트 거래 정보 리스트) 조회
 	 */
 	public AptDetailResponseDTO getApartDetailsByAptSeq(String aptSeq) throws Exception {
+		existsByAptSeq(aptSeq); // 존재 여부 검증
 		ApartInfo apartInfo = getApartInfoByAptSeq(aptSeq);
 
 		// aptSeq로 최신순 100개의 거래량 조회

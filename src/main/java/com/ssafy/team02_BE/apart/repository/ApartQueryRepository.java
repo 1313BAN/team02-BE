@@ -16,7 +16,7 @@ public class ApartQueryRepository {
     /**
      * 동이름으로 아파트 상세 정보 리스트 조회
      */
-    public List<ApartInfo> getHouseInfosByDongName(String dongName) {
+    public List<ApartInfo> getApartInfosByDongName(String dongName) {
         QApartInfo apartInfo = QApartInfo.apartInfo;
         QDongcode dongcode = QDongcode.dongcode;
         return queryFactory
