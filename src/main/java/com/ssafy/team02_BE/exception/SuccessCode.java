@@ -24,10 +24,10 @@ public enum SuccessCode {
     GET_SIDOS(HttpStatus.OK, "시도 조회에 성공했습니다."),
     GET_GUGUNS(HttpStatus.OK, "구군 조회에 성공했습니다."),
     GET_DONGS(HttpStatus.OK, "동 조회에 성공했습니다."),
+
     // user
-//    NICKNAME_CHECK_SUCCESS(HttpStatus.OK, "닉네임 중복 확인에 성공했습니다."),
-//    CHANGE_NICKNAME_SUCCESS(HttpStatus.OK, "닉네임 변경에 성공했습니다."),
-//    GET_USERNAME_SUCCESS(HttpStatus.OK, "유저 이름 조회에 성공했습니다."),
+    UPDATE_USER_SUCCESS(HttpStatus.OK, "유저 정보 수정에 성공했습니다."),
+    GET_USER_SUCCESS(HttpStatus.OK, "유저 정보 조회에 성공했습니다."),
     ;
 
     private final HttpStatus code;

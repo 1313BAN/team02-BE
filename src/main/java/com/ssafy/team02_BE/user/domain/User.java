@@ -1,7 +1,14 @@
-package com.ssafy.team02_BE.auth.domain;
+package com.ssafy.team02_BE.user.domain;
 
 import com.ssafy.team02_BE.common.domain.BaseEntity;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.stream.Collectors;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,10 +16,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.stream.Collectors;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Entity
 @Getter
@@ -59,5 +63,13 @@ public class User extends BaseEntity implements UserDetails {
     @Override
     public String getUsername() {
         return getEmail();
+    }
+
+    public void setPassword(PasswordEncoder passwordEncoder, String password) {
+        this.password = passwordEncoder.encode(password);
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }
