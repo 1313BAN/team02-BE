@@ -30,6 +30,10 @@ public enum ErrorCode {
     MISSING_CLAIM_TOKEN(HttpStatus.UNAUTHORIZED, "정보가 누락된 토큰입니다."),
     INVALID_TOKEN_PAYLOAD(HttpStatus.UNAUTHORIZED, "토큰 payload가 유효하지 않습니다."),
     UNAUTHORIZED_TOKEN(HttpStatus.UNAUTHORIZED, "유효하지 않은 토큰입니다."),
+
+    // apart
+    UNREGISTERED_APART(HttpStatus.NOT_FOUND, "등록되지 않은 아파트입니다."),
+
     ;
 
     private final HttpStatus code;
