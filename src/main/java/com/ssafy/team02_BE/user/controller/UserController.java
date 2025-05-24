@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +27,7 @@ public class UserController {
 
     @PutMapping("/update")
     @Operation(summary = "유저 정보 수정")
-    public ResponseEntity<ApiResponse<UserDetailResponseDTO>> updateUser(@Parameter(hidden = true) @UserId Long userId, UserUpdateRequestDTO userUpdateRequestDTO) throws Exception {
+    public ResponseEntity<ApiResponse<UserDetailResponseDTO>> updateUser(@Parameter(hidden = true) @UserId Long userId, @RequestBody UserUpdateRequestDTO userUpdateRequestDTO) {
         return ResponseEntity
             .status(HttpStatus.OK)
             .body(ApiResponse.success(

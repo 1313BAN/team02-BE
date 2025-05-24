@@ -1,10 +1,10 @@
 package com.ssafy.team02_BE.user.service;
 
-import com.ssafy.team02_BE.user.domain.User;
 import com.ssafy.team02_BE.exception.ErrorCode;
 import com.ssafy.team02_BE.exception.model.NotFoundException;
 import com.ssafy.team02_BE.user.controller.dto.UserDetailResponseDTO;
 import com.ssafy.team02_BE.user.controller.dto.UserUpdateRequestDTO;
+import com.ssafy.team02_BE.user.domain.User;
 import com.ssafy.team02_BE.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,7 +21,7 @@ public class UserService {
      * 유저 정보 수정
      */
     @Transactional
-    public UserDetailResponseDTO updateUser(Long userId, UserUpdateRequestDTO userUpdateRequestDTO) throws Exception {
+    public UserDetailResponseDTO updateUser(Long userId, UserUpdateRequestDTO userUpdateRequestDTO) {
         User user = userRepository.findById(userId)
             .orElseThrow(() -> new NotFoundException(ErrorCode.UNREGISTERED_USER));
 
