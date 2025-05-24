@@ -22,6 +22,6 @@ public class ApartDealsService {
 	public List<ApartDeals> getApartDealsByAptSeq(String aptSeq) throws Exception {
 		// 해당 아파트가 존재하는지 여부
 		apartInfoService.existsByAptSeq(aptSeq);
-		return apartDealsRepository.findByAptSeq(aptSeq);
+		return apartDealsRepository.findAllByAptSeq(aptSeq);
 	}
 }

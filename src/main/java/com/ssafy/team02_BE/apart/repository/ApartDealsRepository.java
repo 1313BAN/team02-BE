@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ApartDealsRepository extends JpaRepository<ApartDeals, Long> {
 
-    List<ApartDeals> findByAptSeq(String aptSeq);
+    List<ApartDeals> findAllByAptSeq(String aptSeq);
 }
