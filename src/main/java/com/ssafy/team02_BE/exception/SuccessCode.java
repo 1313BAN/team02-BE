@@ -17,6 +17,8 @@ public enum SuccessCode {
     // apart
     GET_APARTINFO_BY_APTSEQ(HttpStatus.OK, "아파트 상세 정보 조회에 성공했습니다."),
     GET_APARTDEALS_BY_APTSEQ(HttpStatus.OK, "아파트 거래 조회에 성공했습니다."),
+    GET_APARTINFOS_BY_DONGNAME(HttpStatus.OK, "동이름으로 아파트 검색에 성공했습니다."),
+    GET_APARTDETAILS_BY_APTSEQ(HttpStatus.OK, "아파트 상세 정보와 거래 조회에 성공했습니다."),
     // user
 //    NICKNAME_CHECK_SUCCESS(HttpStatus.OK, "닉네임 중복 확인에 성공했습니다."),
 //    CHANGE_NICKNAME_SUCCESS(HttpStatus.OK, "닉네임 변경에 성공했습니다."),
