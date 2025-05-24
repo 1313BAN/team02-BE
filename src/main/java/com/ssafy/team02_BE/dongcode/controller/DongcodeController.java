@@ -53,12 +53,12 @@ public class DongcodeController {
 
     @GetMapping("/dong")
     @Operation(summary = "동이름 조회")
-    public ResponseEntity<ApiResponse<List<String>>> getDongCode(@RequestParam String sidoName, @RequestParam String gugunName) {
+    public ResponseEntity<ApiResponse<List<String>>> getDongList(@RequestParam String sidoName, @RequestParam String gugunName) {
         return ResponseEntity
             .status(HttpStatus.OK)
             .body(ApiResponse.success(
                 SuccessCode.GET_DONGS,
-                dongcodeService.getDongCode(sidoName, gugunName)
+                dongcodeService.getDongList(sidoName, gugunName)
             ));
     }
 

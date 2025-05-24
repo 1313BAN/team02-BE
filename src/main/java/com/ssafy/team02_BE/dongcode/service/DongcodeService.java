@@ -29,7 +29,7 @@ public class DongcodeService {
     /**
      * dong 코드 조회
      */
-    public List<String> getDongCode(String sidoName, String gugunName) {
+    public List<String> getDongList(String sidoName, String gugunName) {
         return dongcodeQueryRepository.findDistinctDongList(sidoName, gugunName);
     }
 
