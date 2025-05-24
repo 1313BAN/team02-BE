@@ -1,6 +1,6 @@
 package com.ssafy.team02_BE.auth.controller.dto;
 
-import com.ssafy.team02_BE.auth.domain.User;
+import com.ssafy.team02_BE.user.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

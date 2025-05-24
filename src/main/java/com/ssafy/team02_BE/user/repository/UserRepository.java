@@ -1,6 +1,6 @@
-package com.ssafy.team02_BE.auth.repository;
+package com.ssafy.team02_BE.user.repository;
 
-import com.ssafy.team02_BE.auth.domain.User;
+import com.ssafy.team02_BE.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

@@ -1,6 +1,6 @@
 package com.ssafy.team02_BE.security.service;
 
-import com.ssafy.team02_BE.auth.repository.UserRepository;
+import com.ssafy.team02_BE.user.repository.UserRepository;
 import com.ssafy.team02_BE.exception.ErrorCode;
 import com.ssafy.team02_BE.exception.model.NotFoundException;
 import lombok.RequiredArgsConstructor;
