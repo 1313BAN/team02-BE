@@ -22,12 +22,9 @@ public class UserLikeService {
     private final UserService userService;
     private final ApartInfoService apartInfoService;
 
-    private boolean validateUserLikeId(String aptSeq, Long userId) {
-        if (userService.existsByUserId(userId)
-            && apartInfoService.existsByAptSeq(aptSeq)) {
-            return true;
-        }
-        return false;
+    private void validateUserLikeId(String aptSeq, Long userId) {
+        userService.existsByUserId(userId);
+        apartInfoService.existsByAptSeq(aptSeq);
     }
 
     /**

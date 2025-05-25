@@ -52,7 +52,7 @@ public class UserLikeController {
 
     @GetMapping("")
     @Operation(summary = "내가 찜한 매물 조회")
-    public ResponseEntity<ApiResponse<List<ApartInfo>>> isLiked(@Parameter(hidden = true) @UserId Long userId) {
+    public ResponseEntity<ApiResponse<List<ApartInfo>>> getUserLikeListByUserId(@Parameter(hidden = true) @UserId Long userId) {
         return ResponseEntity
             .status(HttpStatus.OK)
             .body(ApiResponse.success(
