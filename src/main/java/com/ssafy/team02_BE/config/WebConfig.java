@@ -27,7 +27,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**") // 모든 경로에 대해
             .allowedOrigins("http://127.0.0.1:9090") // Vue 앱 주소
             .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-            .allowedHeaders("*")
+            .allowedHeaders("Content-Type", "Authorization", "X-Requested-With") // 보안 강화
             .exposedHeaders("Authorization") // Authorization 헤더 노출
             .allowCredentials(true); // 쿠키
     }
