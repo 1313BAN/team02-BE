@@ -34,6 +34,10 @@ public enum ErrorCode {
     // apart
     UNREGISTERED_APART(HttpStatus.NOT_FOUND, "등록되지 않은 아파트입니다."),
 
+    // like
+    ALREADY_EXISTS_LIKE(HttpStatus.CONFLICT, "이미 찜한 매물입니다."),
+    UNREGISTERED_LIKE(HttpStatus.NOT_FOUND, " 이 매물은 찜 목록에 없습니다.")
+
     ;
 
     private final HttpStatus code;
