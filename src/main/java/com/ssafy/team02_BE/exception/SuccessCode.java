@@ -28,6 +28,11 @@ public enum SuccessCode {
     // user
     UPDATE_USER_SUCCESS(HttpStatus.OK, "유저 정보 수정에 성공했습니다."),
     GET_USER_SUCCESS(HttpStatus.OK, "유저 정보 조회에 성공했습니다."),
+
+    // like
+    POST_LIKE_SUCCESS(HttpStatus.CREATED, "매물 찜하기에 성공했습니다."),
+    DELETE_LIKE_SUCCESS(HttpStatus.OK, "매물 찜 취소에 성공했습니다."),
+    GET_LIKES_SUCCESS(HttpStatus.OK, "내가 찜한 매물 조회에 성공했습니다."),
     ;
 
     private final HttpStatus code;

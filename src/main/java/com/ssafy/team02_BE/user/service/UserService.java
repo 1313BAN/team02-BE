@@ -39,4 +39,14 @@ public class UserService {
         return UserDetailResponseDTO.of(userRepository.findById(userId)
             .orElseThrow(() -> new NotFoundException(ErrorCode.UNREGISTERED_USER)));
     }
+
+    /**
+     * 유저 등록 여부 확인
+     */
+    public boolean existsByUserId(Long userId) {
+        if (!userRepository.existsById(userId)) {
+            throw new NotFoundException(ErrorCode.UNREGISTERED_USER);
+        }
+        return true;
+    }
 }
