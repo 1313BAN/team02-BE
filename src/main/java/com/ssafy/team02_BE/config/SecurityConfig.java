@@ -5,6 +5,7 @@ import com.ssafy.team02_BE.security.jwt.JwtFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -46,6 +47,9 @@ public class SecurityConfig {
         http
                 // csrf disable
                 .csrf(AbstractHttpConfigurer::disable)
+
+                //cors
+                .cors(Customizer.withDefaults())
 
                 // 클릭재킹 공격 방어
                 .headers(header -> header.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
