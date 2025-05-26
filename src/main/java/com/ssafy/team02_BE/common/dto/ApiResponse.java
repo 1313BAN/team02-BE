@@ -5,12 +5,10 @@ import com.ssafy.team02_BE.exception.SuccessCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 @Getter
 @RequiredArgsConstructor
 @AllArgsConstructor
-@Setter
 public class ApiResponse<T> { //모든 API 응답 형식을 통일함
     private final int code;
     private final String message;

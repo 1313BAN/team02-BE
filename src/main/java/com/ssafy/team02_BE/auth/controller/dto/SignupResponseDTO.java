@@ -4,12 +4,10 @@ import com.ssafy.team02_BE.user.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
 public class SignupResponseDTO {
 	private Long id;
 	private String email;
