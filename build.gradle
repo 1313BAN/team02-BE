@@ -60,6 +60,9 @@ dependencies {
 
 	// WebClient
 //	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+	// AI
+	implementation 'org.springframework.ai:spring-ai-starter-model-openai:1.0.0'
 }
 
 tasks.named('test') {

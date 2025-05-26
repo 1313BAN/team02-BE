@@ -1,11 +1,15 @@
 package com.ssafy.team02_BE.auth.controller.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 
 @Getter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class LoginRequestDTO {
     private String email;
     private String password;
