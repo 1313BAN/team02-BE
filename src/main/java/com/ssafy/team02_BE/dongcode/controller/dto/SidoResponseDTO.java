@@ -1,15 +1,14 @@
 package com.ssafy.team02_BE.dongcode.controller.dto;
 
 import java.util.List;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+
+import lombok.*;
 
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Setter
 public class SidoResponseDTO {
     private InnerAdmVOList admVOList;
 
