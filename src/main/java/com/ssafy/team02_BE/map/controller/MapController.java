@@ -1,14 +1,20 @@
 package com.ssafy.team02_BE.map.controller;
 
+import com.ssafy.team02_BE.common.dto.ApiResponse;
+import com.ssafy.team02_BE.exception.SuccessCode;
+import com.ssafy.team02_BE.map.controller.dto.ApartCoordRequestDTO;
+import com.ssafy.team02_BE.map.service.ApartCoordService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +23,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 @Tag(name = "MapController", description = "동네 추천 관련 기능")
 public class MapController {
+
+    private final ApartCoordService mapService;
 
     public Map<String, Object> getAccessToken() {
         return (Map<String, Object>) WebClient.builder()
@@ -85,6 +93,17 @@ public class MapController {
         }
 
         return Collections.emptyMap(); // 실패 시 빈 맵 반환
+    }
+
+    @PostMapping("/coord")
+    @Operation(summary = "aptCoord 저장")
+    public ResponseEntity<ApiResponse<Void>> insertApartCoords(@RequestBody ApartCoordRequestDTO apartCoordRequestDTO) throws Exception {
+        mapService.insertApartCoords(apartCoordRequestDTO);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(ApiResponse.success(
+                        SuccessCode.POST_APARTCOORDS
+                ));
     }
 
 

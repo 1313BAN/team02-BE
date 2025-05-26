@@ -36,6 +36,9 @@ public enum SuccessCode {
 
     // ai
     GET_RECOMMEND_NEIGHBORHOODS(HttpStatus.OK, "동네 추천에 성공했습니다."),
+
+    //map
+    POST_APARTCOORDS(HttpStatus.OK, "아파트 지도 좌표 생성에 성공했습니다."),
     ;
 
     private final HttpStatus code;
