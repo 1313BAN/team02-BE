@@ -16,13 +16,13 @@ public class ApartQueryRepository {
     /**
      * 동이름으로 아파트 상세 정보 리스트 조회
      */
-    public List<ApartInfo> getApartInfosByDongName(String dongName) {
+    public List<ApartInfo> getApartInfosByDongName(String sidoName, String gugunName, String dongName) {
         QApartInfo apartInfo = QApartInfo.apartInfo;
         QDongcode dongcode = QDongcode.dongcode;
         return queryFactory
             .selectFrom(apartInfo)
             .join(dongcode).on(apartInfo.sggCd.concat(apartInfo.umdCd).eq(dongcode.dongCode))
-            .where(dongcode.dongName.eq(dongName))
+            .where(dongcode.sidoName.eq(sidoName), dongcode.gugunName.eq(gugunName), dongcode.dongName.eq(dongName))
             .fetch();
     }
 }

@@ -50,12 +50,12 @@ public class ApartInfoController {
 
 	@GetMapping("")
 	@Operation(summary = "동이름으로 아파트 검색")
-	public ResponseEntity<ApiResponse<List<ApartInfo>>> getApartInfosByDongName(@RequestParam String dongName) throws Exception {
+	public ResponseEntity<ApiResponse<List<ApartInfo>>> getApartInfosByDongName(@RequestParam String sidoName, @RequestParam String gugunName, @RequestParam String dongName) throws Exception {
 		return ResponseEntity
 			.status(HttpStatus.OK)
 			.body(ApiResponse.success(
 				SuccessCode.GET_APARTINFOS_BY_DONGNAME,
-				apartInfoService.getApartInfosByDongName(dongName)
+				apartInfoService.getApartInfosByDongName(sidoName, gugunName, dongName)
 			));
 	}
 

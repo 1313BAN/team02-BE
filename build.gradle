@@ -55,13 +55,37 @@ dependencies {
 	// Querydsl
 	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
 	annotationProcessor "com.querydsl:querydsl-apt:5.0.0:jakarta"
+	//annotationProcessor 'com.querydsl:querydsl-apt:5.0.0:jpa'
 	annotationProcessor "jakarta.annotation:jakarta.annotation-api"
 	annotationProcessor "jakarta.persistence:jakarta.persistence-api"
 
 	// WebClient
 //	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+	// AI
+	implementation 'org.springframework.ai:spring-ai-starter-model-openai:1.0.0'
+}
+
+def querydslDir = "$buildDir/generated/querydsl"
+
+sourceSets {
+    main {
+        java {
+            srcDir querydslDir
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.annotationProcessorGeneratedSourcesDirectory = file(querydslDir)
+}
+
+clean {
+    delete file(querydslDir)
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+// sourceSets.main.java.srcDir "$buildDir/generated/sources/annotationProcessor/java/main"
