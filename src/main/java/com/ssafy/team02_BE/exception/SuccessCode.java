@@ -33,6 +33,9 @@ public enum SuccessCode {
     POST_LIKE_SUCCESS(HttpStatus.CREATED, "매물 찜하기에 성공했습니다."),
     DELETE_LIKE_SUCCESS(HttpStatus.OK, "매물 찜 취소에 성공했습니다."),
     GET_LIKES_SUCCESS(HttpStatus.OK, "내가 찜한 매물 조회에 성공했습니다."),
+
+    // ai
+    GET_RECOMMEND_NEIGHBORHOODS(HttpStatus.OK, "동네 추천에 성공했습니다."),
     ;
 
     private final HttpStatus code;
