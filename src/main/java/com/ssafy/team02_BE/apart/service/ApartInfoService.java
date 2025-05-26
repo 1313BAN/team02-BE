@@ -1,5 +1,6 @@
 package com.ssafy.team02_BE.apart.service;
 
+import com.ssafy.team02_BE.apart.controller.dto.ApartDongNameResponseDTO;
 import com.ssafy.team02_BE.apart.controller.dto.AptDetailResponseDTO;
 import com.ssafy.team02_BE.apart.domain.ApartDeals;
 import com.ssafy.team02_BE.apart.domain.ApartInfo;
@@ -43,7 +44,7 @@ public class ApartInfoService {
     /**
      * 동이름으로 아파트 상세 정보 리스트 조회
      */
-    public List<ApartInfo> getApartInfosByDongName(String sidoName, String gugunName, String dongName) {
+    public List<ApartDongNameResponseDTO> getApartInfosByDongName(String sidoName, String gugunName, String dongName) {
         return apartQueryRepository.getApartInfosByDongName(sidoName, gugunName, dongName);
     }
 
