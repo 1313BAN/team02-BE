@@ -38,6 +38,12 @@ public class User extends BaseEntity implements UserDetails {
     private String password;
 
     @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    private String phoneNumber;
+
+    @Column(nullable = false)
     private String roles;
 
 //    @Column(nullable = false)
@@ -45,12 +51,14 @@ public class User extends BaseEntity implements UserDetails {
 //    private Boolean isDeleted;
 
     @Builder
-    public User(Long id, String nickname, String email, String password, String roles) {
+    public User(Long id, String nickname, String email, String password, String roles, String name, String phoneNumber) {
         this.id = id;
         this.nickname = nickname;
         this.email = email;
         this.password = password;
         this.roles = roles;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
@@ -71,5 +79,13 @@ public class User extends BaseEntity implements UserDetails {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

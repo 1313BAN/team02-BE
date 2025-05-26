@@ -1,6 +1,7 @@
 package com.ssafy.team02_BE.apart.controller;
 
 
+import com.ssafy.team02_BE.apart.controller.dto.ApartDongNameResponseDTO;
 import com.ssafy.team02_BE.apart.controller.dto.AptDetailResponseDTO;
 import com.ssafy.team02_BE.apart.domain.ApartInfo;
 import com.ssafy.team02_BE.apart.service.ApartInfoService;
@@ -50,12 +51,12 @@ public class ApartInfoController {
 
 	@GetMapping("")
 	@Operation(summary = "동이름으로 아파트 검색")
-	public ResponseEntity<ApiResponse<List<ApartInfo>>> getApartInfosByDongName(@RequestParam String dongName) throws Exception {
+	public ResponseEntity<ApiResponse<List<ApartDongNameResponseDTO>>> getApartInfosByDongName(@RequestParam String sidoName, @RequestParam String gugunName, @RequestParam String dongName) throws Exception {
 		return ResponseEntity
 			.status(HttpStatus.OK)
 			.body(ApiResponse.success(
 				SuccessCode.GET_APARTINFOS_BY_DONGNAME,
-				apartInfoService.getApartInfosByDongName(dongName)
+				apartInfoService.getApartInfosByDongName(sidoName, gugunName, dongName)
 			));
 	}
 
