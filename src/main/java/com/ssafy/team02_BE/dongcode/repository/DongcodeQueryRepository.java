@@ -33,7 +33,7 @@ public class DongcodeQueryRepository {
         return queryFactory
             .selectDistinct(dongcode.gugunName)
             .from(dongcode)
-            .where(dongcode.sidoName.eq(sidoName))
+            .where(dongcode.sidoName.eq(sidoName), dongcode.gugunName.isNotNull())
 //            .orderBy(dongcode.gugunName.asc())
             .fetch();
     }
@@ -48,7 +48,8 @@ public class DongcodeQueryRepository {
             .selectDistinct(dongcode.dongName)
             .from(dongcode)
             .where(dongcode.sidoName.eq(sidoName),
-                dongcode.gugunName.eq(gugunName))
+                dongcode.gugunName.eq(gugunName),
+                    dongcode.dongName.isNotNull())
 //            .orderBy(dongcode.dongName.asc())
             .fetch();
     }
