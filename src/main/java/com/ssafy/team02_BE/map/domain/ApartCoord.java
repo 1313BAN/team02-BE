@@ -13,11 +13,11 @@ import lombok.NoArgsConstructor;
 public class ApartCoord {
     @Id
     private String aptSeq;
-    private String x;
-    private String y;
+    private Double x;
+    private Double y;
 
     @Builder
-    public ApartCoord(String aptSeq, String x, String y) {
+    public ApartCoord(String aptSeq, Double x, Double y) {
         this.aptSeq = aptSeq;
         this.x = x;
         this.y = y;

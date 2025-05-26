@@ -23,10 +23,10 @@ public class ApartDongNameResponseDTO {
     private int buildYear;
     private String latitude;
     private String longitude;
-    private String x;
-    private String y;
+    private Double x;
+    private Double y;
 
-    public static ApartDongNameResponseDTO of(String aptSeq, String sggCd, String umdCd, String umdNm, String jibun, String roadNmSggCd, String roadNm, String roadNmBonbun, String roadNmBubun, String aptNm, int buildYear, String latitude, String longitude, String x, String y) {
+    public static ApartDongNameResponseDTO of(String aptSeq, String sggCd, String umdCd, String umdNm, String jibun, String roadNmSggCd, String roadNm, String roadNmBonbun, String roadNmBubun, String aptNm, int buildYear, String latitude, String longitude, Double x, Double y) {
         return ApartDongNameResponseDTO.builder()
                 .aptSeq(aptSeq)
                 .sggCd(sggCd)

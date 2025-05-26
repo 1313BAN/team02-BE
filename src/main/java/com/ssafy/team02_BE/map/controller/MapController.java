@@ -97,8 +97,8 @@ public class MapController {
 
     @PostMapping("/coord")
     @Operation(summary = "aptCoord 저장")
-    public ResponseEntity<ApiResponse<Void>> insertApartCoords(@RequestBody ApartCoordRequestDTO apartCoordRequestDTO) throws Exception {
-        mapService.insertApartCoords(apartCoordRequestDTO);
+    public ResponseEntity<ApiResponse<Void>> insertApartCoords(@RequestBody List<ApartCoordRequestDTO> apartCoordRequestDTOs) throws Exception {
+        mapService.insertApartCoords(apartCoordRequestDTOs);
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(ApiResponse.success(

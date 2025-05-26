@@ -30,7 +30,7 @@ public class ApartQueryRepository {
                 .select(apartInfo, apartCoord)
                 .from(apartInfo)
                 .join(dongcode).on(apartInfo.sggCd.concat(apartInfo.umdCd).eq(dongcode.dongCode))
-                .join(apartCoord).on(apartInfo.aptSeq.eq(apartCoord.aptSeq))
+                .leftJoin(apartCoord).on(apartInfo.aptSeq.eq(apartCoord.aptSeq))
                 .where(
                         dongcode.sidoName.eq(sidoName),
                         dongcode.gugunName.eq(gugunName),
@@ -55,8 +55,8 @@ public class ApartQueryRepository {
                             info.getBuildYear(),
                             info.getLatitude(),
                             info.getLongitude(),
-                            coord.getX(),
-                            coord.getY()
+                            coord != null ? (coord.getX() != null ? coord.getX() : 0.0) : 0.0,
+                            coord != null ? (coord.getY() != null ? coord.getY() : 0.0) : 0.0
                     );
                 })
                 .collect(Collectors.toList());

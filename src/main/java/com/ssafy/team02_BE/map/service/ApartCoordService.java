@@ -7,17 +7,19 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ApartCoordService {
     private final ApartCoordRepository apartCoordRepository;
 
     @Transactional
-    public void insertApartCoords(ApartCoordRequestDTO apartAddressRequestDTO) {
-        apartAddressRequestDTO.getApartCoords().forEach(apartCoordDTO -> {
+    public void insertApartCoords(List<ApartCoordRequestDTO> apartAddressRequestDTO) {
+        apartAddressRequestDTO.forEach(apartCoordDTO -> {
             ApartCoord apartCoord = ApartCoord.builder().aptSeq(apartCoordDTO.getAptSeq())
-                    .x(apartCoordDTO.getUtmk().getData().getX())
-                    .y(apartCoordDTO.getUtmk().getData().getY())
+                    .x(apartCoordDTO.getX())
+                    .y(apartCoordDTO.getY())
                     .build();
             apartCoordRepository.save(apartCoord);
         });
