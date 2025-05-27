@@ -36,7 +36,7 @@ public class UserService {
         user.setNickname(userUpdateRequestDTO.getNickname());
         user.setName(userUpdateRequestDTO.getName());
         user.setPhoneNumber(userUpdateRequestDTO.getPhoneNumber());
-
+        user.setPassword(userUpdateRequestDTO.isNullPassword() ? user.getPassword() : userUpdateRequestDTO.getPassword());
         return UserUpdateResponseDTO.of(user);
     }
 
