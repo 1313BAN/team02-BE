@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+//    private final PasswordEncoder passwordEncoder;
 
     /**
      * 유저 정보 수정
@@ -26,7 +26,8 @@ public class UserService {
             .orElseThrow(() -> new NotFoundException(ErrorCode.UNREGISTERED_USER));
 
         user.setNickname(userUpdateRequestDTO.getNickname());
-        user.setPassword(passwordEncoder, userUpdateRequestDTO.getPassword());
+//        user.setPassword(passwordEncoder, userUpdateRequestDTO.getPassword());
+        user.setPassword(userUpdateRequestDTO.getPassword());
         user.setName(userUpdateRequestDTO.getName());
         user.setPhoneNumber(userUpdateRequestDTO.getPhoneNumber());
 

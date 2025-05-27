@@ -73,8 +73,12 @@ public class User extends BaseEntity implements UserDetails {
         return getEmail();
     }
 
-    public void setPassword(PasswordEncoder passwordEncoder, String password) {
-        this.password = passwordEncoder.encode(password);
+//    public void setPassword(PasswordEncoder passwordEncoder, String password) {
+//        this.password = passwordEncoder.encode(password);
+//    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setNickname(String nickname) {

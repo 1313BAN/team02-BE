@@ -14,4 +14,8 @@ public class UserUpdateRequestDTO {
     private String nickname;
     private String name;
     private String phoneNumber;
+
+    public String getPassword() {
+        return "{noop}" + password;
+    }
 }
