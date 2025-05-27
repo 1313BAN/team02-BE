@@ -18,4 +18,8 @@ public class UserUpdateRequestDTO {
     public String getPassword() {
         return "{noop}" + password;
     }
+
+    public boolean isNullPassword() {
+        return password == null;
+    }
 }
