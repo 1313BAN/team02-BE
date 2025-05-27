@@ -3,6 +3,7 @@ package com.ssafy.team02_BE.user.controller;
 import com.ssafy.team02_BE.auth.resolver.UserId;
 import com.ssafy.team02_BE.common.dto.ApiResponse;
 import com.ssafy.team02_BE.exception.SuccessCode;
+import com.ssafy.team02_BE.user.controller.dto.ResetPasswordRequestDTO;
 import com.ssafy.team02_BE.user.controller.dto.UserDetailResponseDTO;
 import com.ssafy.team02_BE.user.controller.dto.UserUpdateRequestDTO;
 import com.ssafy.team02_BE.user.controller.dto.UserUpdateResponseDTO;
@@ -10,14 +11,14 @@ import com.ssafy.team02_BE.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -46,6 +47,17 @@ public class UserController {
                 SuccessCode.GET_USER_SUCCESS,
                 userService.getUserDetail(userId)
             ));
+    }
+
+    @PostMapping("/reset-password")
+    @Operation(summary = "비밀번호 재설정")
+    public ResponseEntity<ApiResponse<Void>> resetPassword(@RequestBody ResetPasswordRequestDTO resetPasswordRequestDTO) {
+        userService.resetPassword(resetPasswordRequestDTO);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(ApiResponse.success(
+                        SuccessCode.UPDATE_PASSWORD_SUCCESS
+                ));
     }
 
 }
