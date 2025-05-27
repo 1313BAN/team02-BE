@@ -5,6 +5,7 @@ import com.ssafy.team02_BE.common.dto.ApiResponse;
 import com.ssafy.team02_BE.exception.SuccessCode;
 import com.ssafy.team02_BE.user.controller.dto.UserDetailResponseDTO;
 import com.ssafy.team02_BE.user.controller.dto.UserUpdateRequestDTO;
+import com.ssafy.team02_BE.user.controller.dto.UserUpdateResponseDTO;
 import com.ssafy.team02_BE.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -27,7 +28,7 @@ public class UserController {
 
     @PutMapping("/update")
     @Operation(summary = "유저 정보 수정")
-    public ResponseEntity<ApiResponse<UserDetailResponseDTO>> updateUser(@Parameter(hidden = true) @UserId Long userId, @RequestBody UserUpdateRequestDTO userUpdateRequestDTO) {
+    public ResponseEntity<ApiResponse<UserUpdateResponseDTO>> updateUser(@Parameter(hidden = true) @UserId Long userId, @RequestBody UserUpdateRequestDTO userUpdateRequestDTO) {
         return ResponseEntity
             .status(HttpStatus.OK)
             .body(ApiResponse.success(

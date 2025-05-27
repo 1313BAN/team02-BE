@@ -15,4 +15,8 @@ public class SignupRequestDTO {
 	private String nickname;
 	private String name;
 	private String phoneNumber;
+
+	public String getPassword() {
+		return "{noop}" + password;
+	}
 }
