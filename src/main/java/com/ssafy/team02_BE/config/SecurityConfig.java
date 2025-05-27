@@ -11,7 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -23,10 +24,16 @@ public class SecurityConfig {
     private final JwtFilter jwtFilter;
     private final JwtExceptionHandlerFilter jwtExceptionHandlerFilter;
 
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+//    @Bean
+//    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+//
+//        return new BCryptPasswordEncoder();
+//    }
 
-        return new BCryptPasswordEncoder();
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        // NoOpPasswordEncoder는 비밀번호를 평문으로 처리
+        return NoOpPasswordEncoder.getInstance();
     }
 
     // 인증 없이 접근 가능한 경로

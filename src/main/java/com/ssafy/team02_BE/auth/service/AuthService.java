@@ -6,19 +6,18 @@ import com.ssafy.team02_BE.auth.controller.dto.SignupRequestDTO;
 import com.ssafy.team02_BE.auth.controller.dto.SignupResponseDTO;
 import com.ssafy.team02_BE.auth.domain.Refresh;
 import com.ssafy.team02_BE.auth.domain.Role;
-import com.ssafy.team02_BE.user.domain.User;
 import com.ssafy.team02_BE.auth.repository.RefreshRepository;
-import com.ssafy.team02_BE.user.repository.UserRepository;
 import com.ssafy.team02_BE.exception.ErrorCode;
 import com.ssafy.team02_BE.exception.model.ConflictException;
 import com.ssafy.team02_BE.exception.model.NotFoundException;
 import com.ssafy.team02_BE.security.jwt.Jwt;
 import com.ssafy.team02_BE.security.jwt.JwtProvider;
+import com.ssafy.team02_BE.user.domain.User;
+import com.ssafy.team02_BE.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,7 +31,7 @@ public class AuthService {
     private final UserRepository userRepository;
     private final JwtProvider jwtProvider;
     private final RefreshRepository refreshRepository;
-    private final PasswordEncoder passwordEncoder;
+    //    private final PasswordEncoder passwordEncoder;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
 
     /**
@@ -42,7 +41,6 @@ public class AuthService {
     public LoginResponseDTO login(LoginRequestDTO loginRequestDTO) {
         // DTO로부터 email, password를 꺼내 token 생성
         UsernamePasswordAuthenticationToken authenticationToken = loginRequestDTO.toAuthentication();
-
         // 실제 검증 (사용자 비밀번호 체크) 이 이루어지는 부분
         // ID 존재 여부 + 해당 ID로 불러온 비밀번호가 사용자가 제출한 비밀번호와 일치하는지 겅즘
         //   authenticate 메서드가 실행이 될 때 CustomUserDetailsService 에서 만들었던 loadUserByUsername 메서드가 실행됨
@@ -76,7 +74,8 @@ public class AuthService {
         User signupUser = User.builder()
                 .nickname(signupRequestDTO.getNickname())
                 .email(signupRequestDTO.getEmail())
-                .password(passwordEncoder.encode(signupRequestDTO.getPassword()))
+//                .password(passwordEncoder.encode(signupRequestDTO.getPassword()))
+                .password(signupRequestDTO.getPassword())
                 .name(signupRequestDTO.getName())
                 .phoneNumber(signupRequestDTO.getPhoneNumber())
                 .roles(Role.USER.name())
