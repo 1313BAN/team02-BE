@@ -8,6 +8,7 @@ import com.ssafy.team02_BE.auth.domain.Refresh;
 import com.ssafy.team02_BE.auth.domain.Role;
 import com.ssafy.team02_BE.auth.repository.RefreshRepository;
 import com.ssafy.team02_BE.exception.ErrorCode;
+import com.ssafy.team02_BE.exception.model.BadRequestException;
 import com.ssafy.team02_BE.exception.model.ConflictException;
 import com.ssafy.team02_BE.exception.model.NotFoundException;
 import com.ssafy.team02_BE.security.jwt.Jwt;
@@ -160,5 +161,15 @@ public class AuthService {
 
         // 저장
         refreshRepository.save(refresh);
+    }
+
+    /**
+     * 유저 확인
+     */
+    @Transactional(readOnly = true)
+    public String checkUserExists(String name, String email) {
+        User user = userRepository.findByNameAndEmail(name, email)
+                .orElseThrow(() -> new BadRequestException(ErrorCode.WRONG_INFO_USER));
+        return jwtProvider.generatePasswordResetToken(user.getId());
     }
 }

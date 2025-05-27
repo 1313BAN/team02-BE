@@ -28,6 +28,9 @@ public class JwtProvider implements InitializingBean {
     private static final String TOKEN_TYPE_KEY = "type";
     private static final String ACCESS_TOKEN_TYPE = "access";
     private static final String REFRESH_TOKEN_TYPE = "refresh";
+    // 비밀번호 재설정을 위한 상수
+    private static final String PASSWORD_RESET_TOKEN_TYPE = "password_reset"; // 비밀번호 재설정 토큰 타입
+    private static final Long PASSWORD_RESET_EXPIRATION = 600L; // 10분 = 600초
 
     private final String secretCode;
     private final Long accessTokenExpiration;
@@ -172,6 +175,53 @@ public class JwtProvider implements InitializingBean {
     public Long extractUserIdFromAuthentication(Authentication authentication) {
         try {
             return Long.parseLong(authentication.getPrincipal().toString());
+        } catch (NumberFormatException e) {
+            throw new UnauthorizedException(ErrorCode.INVALID_TOKEN_PAYLOAD);
+        }
+    }
+
+    /**
+     * 비밀번호 재설정을 위한 10분 유효기간 토큰 생성
+     * @param userId 사용자 ID
+     * @return 비밀번호 재설정 토큰
+     */
+    public String generatePasswordResetToken(Long userId) {
+        return generateToken(
+                userId.toString(),                   // subject: 사용자 ID를 문자열로 변환
+                "PASSWORD_RESET",                    // authorities: 비밀번호 재설정 권한
+                PASSWORD_RESET_TOKEN_TYPE,           // tokenType: password_reset
+                PASSWORD_RESET_EXPIRATION            // expiration: 600초 (10분)
+        );
+    }
+
+    /**
+     * 비밀번호 재설정 토큰 검증
+     * @param token 검증할 토큰
+     * @return 토큰이 유효한 비밀번호 재설정 토큰인지 여부
+     */
+    public boolean isValidPasswordResetToken(String token) {
+        try {
+            Claims claims = parseClaims(token);
+            String tokenType = claims.get(TOKEN_TYPE_KEY, String.class);
+            return PASSWORD_RESET_TOKEN_TYPE.equals(tokenType) &&
+                    !claims.getExpiration().before(new Date());
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    /**
+     * 비밀번호 재설정 토큰에서 사용자 ID 추출
+     * @param token 비밀번호 재설정 토큰
+     * @return 사용자 ID
+     */
+    public Long getUserIdFromPasswordResetToken(String token) {
+        try {
+            if (!isValidPasswordResetToken(token)) {
+                throw new UnauthorizedException(ErrorCode.INVALID_TOKEN_PAYLOAD);
+            }
+            Claims claims = parseClaims(token);
+            return Long.parseLong(claims.getSubject());
         } catch (NumberFormatException e) {
             throw new UnauthorizedException(ErrorCode.INVALID_TOKEN_PAYLOAD);
         }

@@ -109,6 +109,18 @@ public class AuthController {
                 ));
     }
 
+    @GetMapping("/check")
+    public ResponseEntity<ApiResponse<String>> checkUserExists(
+            @RequestParam String name,
+            @RequestParam String email
+    ) {
+        String passwordResetToken = authService.checkUserExists(name, email);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(ApiResponse.success(SuccessCode.CHECK_USER_EXISTS_SUCCESS,
+                        passwordResetToken));
+    }
+
     private HttpHeaders addJwtTokensToHeaders(Jwt jwt, HttpServletResponse response) {
         // header에 accesstoken 저장
         HttpHeaders headers = new HttpHeaders();

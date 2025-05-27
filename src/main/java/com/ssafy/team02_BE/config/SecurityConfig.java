@@ -47,8 +47,10 @@ public class SecurityConfig {
             "/auth/signup",
             "/auth/login",
             "/auth/reissue",
+            "/auth/check",
             "/map/**",
-            "/recommendation/**"
+            "/recommendation/**",
+            "/user/reset-password"
     };
 
     @Bean

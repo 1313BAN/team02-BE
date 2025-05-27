@@ -13,6 +13,7 @@ public enum SuccessCode {
     LOGOUT_SUCCESS(HttpStatus.OK, "로그아웃에 성공했습니다."),
     TOKEN_REFRESH_SUCCESS(HttpStatus.OK, "토큰 재발급에 성공했습니다."),
     WITHDRAW_SUCCESS(HttpStatus.OK, "탈퇴에 성공했습니다."),
+    CHECK_USER_EXISTS_SUCCESS(HttpStatus.OK, "존재하는 유저 입니다."),
 
     // apart
     GET_APARTINFO_BY_APTSEQ(HttpStatus.OK, "아파트 상세 정보 조회에 성공했습니다."),
@@ -28,6 +29,7 @@ public enum SuccessCode {
     // user
     UPDATE_USER_SUCCESS(HttpStatus.OK, "유저 정보 수정에 성공했습니다."),
     GET_USER_SUCCESS(HttpStatus.OK, "유저 정보 조회에 성공했습니다."),
+    UPDATE_PASSWORD_SUCCESS(HttpStatus.OK, "비밀번호 재설정에 성공했습니다."),
 
     // like
     POST_LIKE_SUCCESS(HttpStatus.CREATED, "매물 찜하기에 성공했습니다."),
